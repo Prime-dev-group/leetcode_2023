@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        //so basically we need to pick up the two highest boundaries both on left and right
+        int low=0;
+        int area=0;
+        int high=height.size()-1;
+        int maxareapossible;
+        while(low<high){
+            maxareapossible=min(height[low],height[high])*(high-low);
+            area=max(area,maxareapossible);
+            if(height[low]<height[high]){
+                low++;
+            }else high--;
+        }
+        return area;
+    }
+};
