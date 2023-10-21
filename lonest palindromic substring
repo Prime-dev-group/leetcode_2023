@@ -1,0 +1,47 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        //there are two types of palindrome even and odd
+        //odd palindrome
+        //i will check if i-1 and i+1 are equal or not if equal then i will expand towards right
+        //and left
+        int length=s.size();
+        int result=1;
+        int startindex=0;
+        int endindex=0;
+        for(int i =1;i<length-1;i++){
+            int start=i-1;
+            int end=i+1;
+            while(start>=0 && end<length &&s[start]==s[end]){
+                if(result<(end-start+1)){
+                startindex=start;
+                endindex=end;
+                result=end-start+1;
+            }
+                start--;
+                end++;
+            }
+            
+            
+        }
+        
+        
+        //for even string
+        for(int i =0;i<length-1;i++){
+            int start=i;
+            int end=i+1;
+            while(start>=0 && end<length &&s[start]==s[end]){
+                if(result<(end-start+1)){
+                startindex=start;
+                endindex=end;
+                result=end-start+1;
+            } 
+                start--;
+                end++;
+            }
+            
+        }
+        return s.substr(startindex,result);
+        
+    }
+};
